@@ -28,8 +28,8 @@ body {
 #image-preview {
     padding:20px;
     background-color: white;
-    height: 80%;
-    width: 80%;
+    height: 65%;
+    width: 65%;
     opacity: 0;
     transition-duration: 0.5s;
     display: flex;
