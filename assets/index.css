@@ -38,16 +38,11 @@ body {
 }
 
 #image-preview-container{
-    height: 90%;
-    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#image-preview-container img {
-    height: 90%;
-}
 
 #close-preview {
     position: absolute;
@@ -64,7 +59,7 @@ body {
     flex-direction: column;
     position: absolute;
     right: 5px;
-    bottom: 5px;
+    top: 5px;
     background-color: #0005;
     border-radius:5px;
     height: 40px;
