@@ -23,11 +23,20 @@ body {
     bottom: 5%;
     left: 5%;
     right: 5%;
-    display: flex;
-    justify-items: center;
-    align-items: center;
     opacity: 0;
     transition-duration: 0.5s;
+}
+
+#image-preview-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#image-preview-container img {
+    height: 90%;
 }
 
 #close-preview {
