@@ -17,11 +17,11 @@ body {
 }
 
 
-#palletes {
+#palettes {
     display: flex;
 }
 
-.pallete{
+.palette{
     border-style: solid;
     border-radius: 3px;
     border-color: white;
@@ -32,7 +32,7 @@ body {
     width: 20px;
 }
 
-.pallete-item{
+.palette-item{
     flex: 1;
     height: 100%;
 }

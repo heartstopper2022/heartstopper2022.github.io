@@ -100,7 +100,7 @@
       <input id="shadowY" type="range" min="-100" max="100" value="-1">
     </div>
 
-    <div id="palletes" class="input-group">
+    <div id="palettes" class="input-group">
 
     </div>
   </div>
@@ -191,7 +191,7 @@
     randShadowColor();
   });
 
-  const palletes = [
+  const palettes = [
     ['006E7F', 'F8CB2E', 'EE5007', 'B22727'],
     ['E9D5DA', '827397', '4D4C7D', '363062'],
     ['F1DDBF', '525E75', '78938A', '92BA92'],
@@ -200,24 +200,29 @@
     ['E9EFC0', 'B4E197', '83BD75', '4E944F'],
   ];
 
-  for (let i = 0; i < palletes.length; i++) {
-    let id = `pallete${i}`; 
+  for (let i = 0; i < palettes.length; i++) {
+    let id = `palette${i}`; 
     jQuery('<div>', {
       id: id,
-      class: 'pallete',
-    }).appendTo('#palletes').click(()=>{
-      let shuffled = palletes[i]
+      class: 'palette',
+    }).appendTo('#palettes').click(()=>{
+      let shuffled = palettes[i]
                       .map(value => ({ value, sort: Math.random() }))
                       .sort((a, b) => a.sort - b.sort)
                       .map(({ value }) => value)
       $("#background").css("fill", `#${shuffled[0]}`);
       $("#txt").css("fill", `#${shuffled[1]}`);
       $("#shadow").css("fill", `#${shuffled[2]}`);
+
+      $("#bgColor").val(`#${shuffled[0]}`);
+      $("#textColor").val(`#${shuffled[1]}`);
+      $('#shadowColor').val(`#${shuffled[2]}`);
+
     });
-    for(let j = 0; j < palletes[i].length; j++) {
+    for(let j = 0; j < palettes[i].length; j++) {
       jQuery('<div>', {
-        class: 'pallete-item',
-        style: `background-color:#${palletes[i][j]}`,
+        class: 'palette-item',
+        style: `background-color:#${palettes[i][j]}`,
       }).appendTo(`#${id}`);
     }
   }
