@@ -1,3 +1,45 @@
+:root {
+    --app-height: 100%;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+
+    @media not all and (hover:hover) {
+        height: var(--app-height);
+    }
+}
+
+#image-preview {
+    padding:20px;
+    background-color: white;
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+
+#close-preview {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
+#close-preview span {
+    padding-top: 3px;
+}
+
 #settings-panel {
     display: flex;
     flex-direction: column;

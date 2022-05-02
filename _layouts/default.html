@@ -28,7 +28,7 @@
       rel="stylesheet">
 </head>
 <body style="font-family:Arial, Helvetica, sans-serif">
-  <svg id="wallpaper" width="100%" height="100vh" >
+  <svg id="wallpaper" width="100%" height="100%" >
     <rect id="background" width="100%" height="100%" style="fill:#ffd6bb;stroke-width:0;" />
     <text id="shadow" x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#fff">[gay panic]</text>
     <text id="txt" x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#ffa39f">[gay panic]</text>
@@ -36,10 +36,15 @@
 
   <canvas id="cvs"></canvas>
 
+  <div id="image-preview" width="90%" height="90%">
+    <button id="close-preview" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">close</span></button>
+    <div id="image-preview-container"></div>
+  </div>
+
   <div id="settings-panel">
 
     <div class="settings-header">
-      <button id="save" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">file_download</span></button>
+      <button id="save" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">image</span></button>
       <button id="settings" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">settings</span></button>
     </div>
     <div class="input-group">
@@ -86,11 +91,17 @@
 </body>
 
 <script type="module">
+  const appHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+  }
+  window.addEventListener('resize', appHeight)
+  appHeight()
+
   import { Canvg } from 'https://cdn.skypack.dev/canvg';
 
   let shadow = $('#shadow');
   let text = $('#txt');
-  shadow.attr('transform', 'translate(3,-1)');
   const pixelRatio = window.devicePixelRatio || 1;
 
   let xOffset = 0;
@@ -110,13 +121,17 @@
 
     text.attr('font-size', `${6 + sizeDelta/30.0}vh`);
     shadow.attr('font-size', `${6 + sizeDelta/30.0}vh`);
-
   }
 
   updateLayout();
-
+  let previewing = false;
   const canvas = document.getElementById('cvs');
   $('#save').click(()=>{
+    if (previewing) {
+      $('#image-preview').css('opacity', '0');
+      previewing = false;
+      return;
+    }
     let svg  = document.getElementById('wallpaper');
     let dim = document.getElementById("background").getBBox();
     canvas.height = dim.height * pixelRatio;
@@ -132,7 +147,16 @@
     const imgURI = canvas
       .toDataURL('image/png')
       .replace('image/png', 'image/octet-stream');
-    download(imgURI);
+
+    $('#image-preview-container').html(`<img src="${imgURI}" height="90%"/>`);
+    $('#image-preview').css('opacity', '1');
+    previewing = true;
+    //download(imgURI);
+  })
+
+  $('#close-preview').click(function() {
+    $('#image-preview').css('opacity', '0');
+    previewing = false;
   })
 
   function download(href) {
@@ -189,7 +213,7 @@
   let collapsed = true;
   $('#settings').click( function() {
     if (collapsed) {
-      $('#settings-panel').css('height', '400px');
+      $('#settings-panel').css('height', '370px');
     } else {
       $('#settings-panel').css('height', '40px');
     }
