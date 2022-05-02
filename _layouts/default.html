@@ -56,6 +56,7 @@
 
     <div class="settings-header">
       <button id="save" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">image</span></button>
+      <button id="randomize" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">casino</span></button>
       <button id="settings" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">settings</span></button>
     </div>
     <div class="input-group">
@@ -133,6 +134,16 @@
     text.attr('font-size', `${6 + sizeDelta/30.0}vh`);
     shadow.attr('font-size', `${6 + sizeDelta/30.0}vh`);
   }
+
+  function rand255() {
+    return Math.floor(Math.random() * 255);
+  }
+
+  $('#randomize').click(()=>{
+    $("#background").css("fill", `rgb(${rand255()},${rand255()},${rand255()})`);
+    $("#text").css("fill", `rgb(${rand255()},${rand255()},${rand255()})`);
+    $("#shadow").css("fill", `rgb(${rand255()},${rand255()},${rand255()})`);
+  });
 
   updateLayout();
   let previewing = false;
