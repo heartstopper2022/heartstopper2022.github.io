@@ -50,7 +50,9 @@
   <div id="image-preview-modal">
     <div id="image-preview">
       <!-- <button id="close-preview" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">close</span></button> -->
-      <div id="image-preview-container"></div>
+      <div style="z-index:2;" id="image-preview-container"></div>
+      <span style="position:absolute"> Try toggling image again ;) </span>
+
     </div>
   </div>
 
@@ -145,6 +147,8 @@
       previewing = false;
       return;
     }
+
+
     let svg  = document.getElementById('wallpaper');
     let dim = document.getElementById("background").getBBox();
     canvas.height = dim.height * pixelRatio;
@@ -156,7 +160,6 @@
     ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
     let v = Canvg.fromString(ctx, svg.outerHTML);
     v.start();
-    v.start();
     updateLayout();
     const imgURI = canvas
       .toDataURL('image/png')
@@ -165,7 +168,6 @@
     $('#image-preview-container').html(`<img src="${imgURI}" height="90%"/>`);
     $('#image-preview').css('opacity', '1');
     previewing = true;
-    //download(imgURI);
   })
 
   $('#close-preview').click(function() {
