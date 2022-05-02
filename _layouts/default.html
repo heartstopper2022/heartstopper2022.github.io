@@ -158,8 +158,7 @@
     v.start();
     updateLayout();
     const imgURI = canvas
-      .toDataURL('image/png')
-      .replace('image/png', 'image/octet-stream');
+      .toDataURL('image/png');
 
     $('#image-preview-container').html(`<img src="${imgURI}" height="90%"/>`);
     $('#image-preview').css('opacity', '1');
