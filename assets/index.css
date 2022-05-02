@@ -16,6 +16,35 @@ body {
     }
 }
 
+
+#palletes {
+    display: flex;
+}
+
+.pallete{
+    border-style: solid;
+    border-radius: 3px;
+    border-color: white;
+    border-width: 2px;
+    margin: 3px;
+    display: flex;
+    height: 20px;
+    width: 20px;
+}
+
+.pallete-item{
+    flex: 1;
+    height: 100%;
+}
+
+#wallpaper text {
+    transition-duration: 0.2s;
+}
+
+#wallpaper rect {
+    transition-duration: 0.2s;
+}
+
 #image-preview-modal {
     position: absolute;
     height: 100%;
@@ -74,6 +103,11 @@ body {
     display: flex;
     justify-content: flex-end;
     margin: 3px;
+}
+
+.input-group .material-icons {
+    color:white;
+    margin-top: -2px;
 }
 
 .input-group-left {

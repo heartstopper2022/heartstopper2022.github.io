@@ -65,15 +65,15 @@
       </div>
     </div>
     <div class="input-group">
-      <span class="description">Background</span>
+      <span id="randBgColor" class="material-icons">casino</span> <span class="description">Background</span>
       <input id="bgColor" type="color" value="#ffd6bb">
     </div>
     <div class="input-group">
-      <span class="description">Text</span>
+      <span id="randTextColor" class="material-icons">casino</span> <span class="description">Text</span>
       <input id="textColor" type="color" value="#ffa39f">
     </div>
     <div class="input-group">
-      <span class="description">Shadow</span>
+      <span id="randShadowColor" class="material-icons">casino</span> <span class="description">Shadow</span>
       <input id="shadowColor" type="color" value="#ffffff">
     </div>
 
@@ -98,6 +98,10 @@
     <div class="input-group">
       <span class="description">Shadow Y</span>
       <input id="shadowY" type="range" min="-100" max="100" value="-1">
+    </div>
+
+    <div id="palletes" class="input-group">
+
     </div>
   </div>
 </body>
@@ -138,12 +142,85 @@
   function rand255() {
     return Math.floor(Math.random() * 255);
   }
+  function toHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  function rgbToHex(r, g, b) {
+    return "#" + toHex(r) + toHex(g) + toHex(b);
+  }
+
+  function randHex() {
+    return rgbToHex(rand255(), rand255(), rand255());
+  }
+
+  function randBgColor() {
+    let newColor = randHex();
+    $("#background").css("fill", newColor);
+    $('#bgColor').val(newColor);
+  }
+
+  function randTextColor() {
+    let newColor = randHex();
+    $("#txt").css("fill", newColor);
+    $('#textColor').val(newColor);
+  }
+
+  function randShadowColor() {
+    let newColor = randHex();
+    $("#shadow").css("fill", newColor);
+    $('#shadowColor').val(newColor);
+  }
 
   $('#randomize').click(()=>{
-    $("#background").css("fill", `rgb(${rand255()},${rand255()},${rand255()})`);
-    $("#text").css("fill", `rgb(${rand255()},${rand255()},${rand255()})`);
-    $("#shadow").css("fill", `rgb(${rand255()},${rand255()},${rand255()})`);
+    randBgColor();
+    randTextColor();
+    randShadowColor();
   });
+
+  $('#randBgColor').click(()=>{
+    randBgColor();
+  });
+
+  $('#randTextColor').click(()=>{
+    randTextColor();
+  });
+
+  $('#randShadowColor').click(()=>{
+    randShadowColor();
+  });
+
+  const palletes = [
+    ['006E7F', 'F8CB2E', 'EE5007', 'B22727'],
+    ['E9D5DA', '827397', '4D4C7D', '363062'],
+    ['F1DDBF', '525E75', '78938A', '92BA92'],
+    ['4700D8', '9900F0', 'F900BF', 'FF85B3'],
+    ['112B3C', '205375', 'F66B0E', 'EFEFEF'],
+    ['E9EFC0', 'B4E197', '83BD75', '4E944F'],
+  ];
+
+  for (let i = 0; i < palletes.length; i++) {
+    let id = `pallete${i}`; 
+    jQuery('<div>', {
+      id: id,
+      class: 'pallete',
+    }).appendTo('#palletes').click(()=>{
+      let shuffled = palletes[i]
+                      .map(value => ({ value, sort: Math.random() }))
+                      .sort((a, b) => a.sort - b.sort)
+                      .map(({ value }) => value)
+      $("#background").css("fill", `#${shuffled[0]}`);
+      $("#txt").css("fill", `#${shuffled[1]}`);
+      $("#shadow").css("fill", `#${shuffled[2]}`);
+    });
+    for(let j = 0; j < palletes[i].length; j++) {
+      jQuery('<div>', {
+        class: 'pallete-item',
+        style: `background-color:#${palletes[i][j]}`,
+      }).appendTo(`#${id}`);
+    }
+  }
 
   updateLayout();
   let previewing = false;
