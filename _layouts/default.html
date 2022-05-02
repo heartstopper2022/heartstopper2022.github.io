@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Heartstopper Wallpaper Generator | Heartstopper Wallpaper Generator</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Heartstopper Wallpaper Generator" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Heartstopper Wallpaper Generator" />
+<meta property="og:description" content="Heartstopper Wallpaper Generator" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Heartstopper Wallpaper Generator" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Heartstopper Wallpaper Generator" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Heartstopper Wallpaper Generator","headline":"Heartstopper Wallpaper Generator","name":"Heartstopper Wallpaper Generator","url":"http://localhost:4000/"}</script>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Heartstopper Wallpaper Generator" />
+<link rel="stylesheet" href="/assets/index.css">
+<link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body style="font-family:Arial, Helvetica, sans-serif">
+  <svg id="wallpaper" width="100%" height="100vh" >
+    <rect id="background" width="100%" height="100%" style="fill:#ffd6bb;stroke-width:0;" />
+    <text id="shadow" x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#fff">[gay panic]</text>
+    <text id="txt" x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#ffa39f">[gay panic]</text>
+  </svg>
+
+  <canvas id="cvs"></canvas>
+
+  <div id="settings-panel">
+
+    <div class="settings-header">
+      <button id="save" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">file_download</span></button>
+      <button id="settings" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">settings</span></button>
+    </div>
+    <div class="input-group">
+      <div class="mui-textfield">
+        <input id="textContent" type="text" value="[gay panic]">
+      </div>
+    </div>
+    <div class="input-group">
+      <span class="description">Background</span>
+      <input id="bgColor" type="color" value="#ffd6bb">
+    </div>
+    <div class="input-group">
+      <span class="description">Text</span>
+      <input id="textColor" type="color" value="#ffa39f">
+    </div>
+    <div class="input-group">
+      <span class="description">Shadow</span>
+      <input id="shadowColor" type="color" value="#ffffff">
+    </div>
+
+    <div class="input-group">
+      <span class="description">Size</span>
+      <input id="size" type="range" min="-100" max="200" value="0">
+    </div>
+
+    <div class="input-group">
+      <span class="description">Text X</span>
+      <input id="textX" type="range" min="-100" max="100" value="0">
+    </div>
+    <div class="input-group">
+      <span class="description">Text Y</span>
+      <input id="textY" type="range" min="-200" max="200" value="0">
+    </div>
+
+    <div class="input-group">
+      <span class="description">Shadow X</span>
+      <input  id="shadowX" type="range" min="-100" max="100" value="3">
+    </div>
+    <div class="input-group">
+      <span class="description">Shadow Y</span>
+      <input id="shadowY" type="range" min="-100" max="100" value="-1">
+    </div>
+  </div>
+</body>
+
+<script type="module">
+  import { Canvg } from 'https://cdn.skypack.dev/canvg';
+
+  let shadow = $('#shadow');
+  let text = $('#txt');
+  shadow.attr('transform', 'translate(3,-1)');
+  const pixelRatio = window.devicePixelRatio || 1;
+
+  let xOffset = 0;
+  let yOffset = 0;
+  let shadowXOffset = 3;
+  let shadowYOffset = -1;
+  let sizeDelta = 0;
+
+  function updateLayout() {
+    // text.attr('x', `${40 + xOffset}%`);
+    // text.attr('y', `${50 + yOffset}%`);
+    // shadow.attr('x', `${40 + xOffset}%`);
+    // shadow.attr('y', `${50 + yOffset}%`);
+
+    text.attr('transform', `translate(${xOffset},${yOffset})`);
+    shadow.attr('transform', `translate(${xOffset + shadowXOffset},${yOffset + shadowYOffset})`);
+
+    text.attr('font-size', `${6 + sizeDelta/30.0}vh`);
+    shadow.attr('font-size', `${6 + sizeDelta/30.0}vh`);
+
+  }
+
+  updateLayout();
+
+  const canvas = document.getElementById('cvs');
+  $('#save').click(()=>{
+    let svg  = document.getElementById('wallpaper');
+    let dim = document.getElementById("background").getBBox();
+    canvas.height = dim.height * pixelRatio;
+    canvas.width = dim.width * pixelRatio;
+    text.attr('transform', `translate(${xOffset * pixelRatio},${yOffset * pixelRatio})`);
+    shadow.attr('transform', `translate(${(xOffset + shadowXOffset) * pixelRatio},${(yOffset + shadowYOffset) * pixelRatio})`); // temporarily scale according to pixel ratio
+    let ctx = document.getElementById('cvs').getContext('2d');
+    ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
+    let v = Canvg.fromString(ctx, svg.outerHTML);
+    v.start();
+    text.attr('transform', `translate(${xOffset},${yOffset})`);
+    shadow.attr('transform', `translate(${xOffset + shadowXOffset},${yOffset + shadowYOffset})`);
+    const imgURI = canvas
+      .toDataURL('image/png')
+      .replace('image/png', 'image/octet-stream');
+    download(imgURI);
+  })
+
+  function download(href) {
+    let download = document.createElement('a');
+    download.href = href;
+    download.download = 'img.png';
+    download.click();
+    download.remove();
+  }
+
+  $(document).on('input', '#textX', function() {
+    xOffset = parseInt($(this).val());
+    updateLayout();
+  });
+
+  $(document).on('input', '#textY', function() {
+    yOffset = parseInt($(this).val());
+    updateLayout();
+  });
+
+  $(document).on('input', '#shadowX', function() {
+    shadowXOffset = parseInt($(this).val());
+    updateLayout();
+  });
+
+  $(document).on('input', '#shadowY', function() {
+    shadowYOffset = parseInt($(this).val());
+    updateLayout();
+  });
+
+  $(document).on('input', '#bgColor', function() {
+    $("#background").css("fill", $(this).val());
+  });
+
+  $(document).on('input', '#textColor', function() {
+    $("#txt").css("fill", $(this).val());
+  });
+
+  $(document).on('input', '#shadowColor', function() {
+    $("#shadow").css("fill", $(this).val());
+  });
+
+  $(document).on('input', '#textContent', function() {
+    $("#txt").text($(this).val());
+    $("#shadow").text($(this).val());
+  });
+
+
+  $(document).on('input', '#size', function() {
+    sizeDelta =  parseInt($(this).val());
+    updateLayout();
+  });
+
+  let collapsed = true;
+  $('#settings').click( function() {
+    if (collapsed) {
+      $('#settings-panel').css('height', '330px');
+    } else {
+      $('#settings-panel').css('height', '40px');
+    }
+    collapsed = !collapsed;
+  });
+  
+</script>
+</html>

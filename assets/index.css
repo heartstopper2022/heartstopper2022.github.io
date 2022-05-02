@@ -1,0 +1,75 @@
+#settings-panel {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    background-color: #0005;
+    border-radius:5px;
+    height: 40px;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 1s;
+    overflow: hidden;
+  }
+
+
+.input-group {
+    display: flex;
+    justify-content: flex-end;
+    margin: 3px;
+}
+
+.input-group-left {
+    display: flex;
+    justify-content: flex-start;
+    margin: 3px;
+}
+
+#textContent {
+    color:white;
+}
+
+#settings {
+    position: absolute;
+    right: 3px;
+}
+
+.settings-header button span {
+    padding-top: 3px;
+}
+
+.settings-header button {
+    margin: 4px;
+    color: white !important;
+}
+
+.settings-header button:hover {
+    background-color: #0005 !important;
+}
+
+.settings-header button:active {
+    background-color: #0003 !important;
+}
+
+.settings-header button:focus {
+    background-color: #0005 !important;
+}
+
+canvas{
+    display: none;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 2em;
+    margin-top: -4px;
+    background-color: transparent;
+}
+
+.input-group .description{
+    padding-left:4px;
+    padding-right:4px;
+    color: white;
+    margin-right: 3px;
+}
