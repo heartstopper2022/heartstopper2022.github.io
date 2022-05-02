@@ -156,6 +156,7 @@
     ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
     let v = Canvg.fromString(ctx, svg.outerHTML);
     v.start();
+    v.start();
     updateLayout();
     const imgURI = canvas
       .toDataURL('image/png')
