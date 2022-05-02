@@ -16,21 +16,30 @@ body {
     }
 }
 
+#image-preview-modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #image-preview {
     padding:20px;
     background-color: white;
-    position: absolute;
-    top: 10%;
-    bottom: 10%;
-    left: 5%;
-    right: 5%;
+    height: 80%;
+    width: 80%;
     opacity: 0;
     transition-duration: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #image-preview-container{
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
