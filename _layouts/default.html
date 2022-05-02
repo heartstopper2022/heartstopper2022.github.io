@@ -51,8 +51,6 @@
     <div id="image-preview">
       <!-- <button id="close-preview" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">close</span></button> -->
       <div style="z-index:2;" id="image-preview-container"></div>
-      <span style="position:absolute"> Try toggling image again ;) </span>
-
     </div>
   </div>
 
@@ -141,7 +139,7 @@
   updateLayout();
   let previewing = false;
   const canvas = document.getElementById('cvs');
-  $('#save').click(()=>{
+  $('#save').click(async ()=>{
     if (previewing) {
       $('#image-preview').css('opacity', '0');
       previewing = false;
@@ -161,6 +159,7 @@
     let v = Canvg.fromString(ctx, svg.outerHTML);
     v.start();
     updateLayout();
+    await new Promise(r => setTimeout(r, 500));
     const imgURI = canvas
       .toDataURL('image/png')
       .replace('image/png', 'image/octet-stream');
