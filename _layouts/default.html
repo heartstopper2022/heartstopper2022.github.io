@@ -65,6 +65,14 @@
       </div>
     </div>
     <div class="input-group">
+      <div class="mui-checkbox">
+        <label>
+          <input type="checkbox" value="" checked id="italics">
+          <span class="description">Italics</span>
+        </label>
+      </div>
+    </div>
+    <div class="input-group">
       <span id="randBgColor" class="material-icons">casino</span> <span class="description">Background</span>
       <input id="bgColor" type="color" value="#ffd6bb">
     </div>
@@ -323,6 +331,16 @@
     }
     collapsed = !collapsed;
   });
+
+  $("#italics").change( function() {
+    if (this.checked) {
+      $('#txt').attr('font-style', 'italic');
+      $('#shadow').attr('font-style', 'italic');
+    } else {
+      $('#txt').attr('font-style', '');
+      $('#shadow').attr('font-style', '');
+    }
+  })
   
 </script>
 </html>
