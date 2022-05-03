@@ -236,15 +236,19 @@
 
   updateLayout();
   let previewing = false;
-  const canvas = document.getElementById('cvs');
+  let canvas = document.getElementById('cvs');
   $('#save').click(()=>{
     if (previewing) {
+      $('#cvs').remove();
       $('#image-preview').css('opacity', '0');
       previewing = false;
       return;
     }
 
-
+    jQuery('<canvas>', {
+        id: 'cvs',
+    }).appendTo('body');
+    canvas = document.getElementById('cvs');
     let svg  = document.getElementById('wallpaper');
     let dim = document.getElementById("background").getBBox();
     canvas.height = dim.height * pixelRatio;
