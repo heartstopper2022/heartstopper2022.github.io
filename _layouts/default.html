@@ -242,7 +242,7 @@
 
   let nasaScale = 1;
   let nasaHeight = 192.99;
-  let nasaWidth = 235.83;
+  let nasaWidth = 228.83;
 
   $('.st2').css('fill', '#FC3D21');
   $('.st1').css('fill', '#FFFFFF');
@@ -278,7 +278,7 @@
 
   updateLayout();
   function updateLayout() {
-    let spacingOffset = _iOSDevice? -textSpacing/2 : textSpacing/2;
+    let spacingOffset = _iOSDevice? 0 : textSpacing/2;
     text.attr('transform', `translate(${xOffset + spacingOffset},${yOffset})`);
     shadow.attr('transform', `translate(${xOffset + shadowXOffset + spacingOffset},${yOffset + shadowYOffset})`);
 
