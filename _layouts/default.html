@@ -278,7 +278,7 @@
 
   updateLayout();
   function updateLayout() {
-    let spacingOffset = _iOSDevice? 0 : textSpacing/2;
+    let spacingOffset = _iOSDevice? -textSpacing/2 : textSpacing/2;
     text.attr('transform', `translate(${xOffset + spacingOffset},${yOffset})`);
     shadow.attr('transform', `translate(${xOffset + shadowXOffset + spacingOffset},${yOffset + shadowYOffset})`);
 
