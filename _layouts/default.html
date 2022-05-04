@@ -206,6 +206,7 @@
 </body>
 
 <script type="module">
+  const _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad/);
   const appHeight = () => {
     const doc = document.documentElement
     doc.style.setProperty('--app-height', `${window.innerHeight}px`)
@@ -277,8 +278,9 @@
 
   updateLayout();
   function updateLayout() {
-    text.attr('transform', `translate(${xOffset + textSpacing/2},${yOffset})`);
-    shadow.attr('transform', `translate(${xOffset + shadowXOffset + textSpacing/2},${yOffset + shadowYOffset})`);
+    let spacingOffset = _iOSDevice? 0 : textSpacing/2;
+    text.attr('transform', `translate(${xOffset + spacingOffset},${yOffset})`);
+    shadow.attr('transform', `translate(${xOffset + shadowXOffset + spacingOffset},${yOffset + shadowYOffset})`);
 
     text.attr('font-size', `${6 + sizeDelta/30.0}vh`);
     shadow.attr('font-size', `${6 + sizeDelta/30.0}vh`);
@@ -567,7 +569,8 @@
   })
 
   //FONTS
-  let fonts = ['arial', 'bangers', 'abril']
+  let fonts = ['arial', 'abril', 'bangers', 'courier', 'impact', 'georgia', 'Brush Script MT'];
+  $('#fontselect').val('arial');
   for (let i = 0; i < fonts.length; i++) {
     jQuery('<option>', {
         value: fonts[i],
