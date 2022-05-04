@@ -435,8 +435,8 @@
     canvas.height = dim.height * pixelRatio;
     canvas.width = dim.width * pixelRatio;
     
-    text.attr('transform', `translate(${(xOffset + textSpacing/2) * pixelRatio},${yOffset * pixelRatio})`);
-    shadow.attr('transform', `translate(${(xOffset + shadowXOffset + textSpacing/2) * pixelRatio},${(yOffset + shadowYOffset) * pixelRatio})`); // temporarily scale according to pixel ratio
+    // text.attr('transform', `translate(${(xOffset + textSpacing/2) * pixelRatio},${yOffset * pixelRatio})`);
+    // shadow.attr('transform', `translate(${(xOffset + shadowXOffset + textSpacing/2) * pixelRatio},${(yOffset + shadowYOffset) * pixelRatio})`); // temporarily scale according to pixel ratio
     let ctx = document.getElementById('cvs').getContext('2d');
     ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
     //let v = Canvg.fromString(ctx, svg.outerHTML);
@@ -444,7 +444,7 @@
     $('#settings-panel').css('opacity', '0');
     let cvs = await html2canvas(document.body);
     $('#settings-panel').css('opacity', '1');
-    updateLayout();
+    // updateLayout();
     const imgURI = cvs
       .toDataURL('image/png');
 
