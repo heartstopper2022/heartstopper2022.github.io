@@ -25,22 +25,107 @@
   <meta property="twitter:title" content="Heartstopper Wallpaper Generator" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","description":"Heartstopper Wallpaper Generator","headline":"Heartstopper Wallpaper Generator","name":"Heartstopper Wallpaper Generator","url":"https://hsgaypanic.com/"}</script>
-  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="/assets/js/jquery-3.6.0.min.js"></script>
+  <script src="/assets/js/html2canvas.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <!-- End Jekyll SEO tag -->
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/assets/index.css">
   <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: "bangers";
+      src: url("/assets//fonts/Bangers-Regular.ttf");
+    }
+    @font-face {
+      font-family: "abril";
+      src: url("/assets//fonts/AbrilFatface-Regular.ttf");
+    }
+  </style>
 </head>
 
 <body style="font-family:Arial, Helvetica, sans-serif">
   <svg id="wallpaper" width="100%" height="100%" >
     <rect id="background" width="100%" height="100%" style="fill:#ffd6bb;stroke-width:0;" />
-    <text id="shadow" x="50%" y="47%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#fff">[gay panic]</text>
-    <text id="txt" x="50%" y="47%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#ffa39f">[gay panic]</text>
-  </svg>
+    <g id="stars"></g>
+    <g>
+        <circle class="st0 nasa-logo" cx="127.7" cy="107.2" r="96.5"/>
+        <circle class="st1 nasa-logo" cx="119" cy="27.4" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="130.1" cy="28.9" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="144.7" cy="48.5" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="64.8" cy="149.4" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="67.6" cy="158.1" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="54.2" cy="150.7" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="98.2" cy="167.7" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="167.2" cy="153.4" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="187.2" cy="131.6" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="89" cy="54.8" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="111" cy="38.6" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="108.6" cy="37" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="106.5" cy="35.4" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="92.4" cy="59" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="124.9" cy="16.8" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="130.3" cy="40.2" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="121.8" cy="35.6" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="107.4" cy="41.8" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="171" cy="174.8" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="63.4" cy="154.9" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="119.8" cy="165.4" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="80.2" cy="154.3" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="87.2" cy="165.7" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="138.9" cy="158.5" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="167.3" cy="142.5" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="188.9" cy="152.3" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="196.3" cy="157" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="197.5" cy="144.2" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="90.2" cy="126" r="0.8"/>
+        <circle class="st1 nasa-logo" cx="90.5" cy="144.6" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="97" cy="158.3" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="174.7" cy="144" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="202.7" cy="142.5" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="188.8" cy="136.5" r="1.1"/>
+        <circle class="st1 nasa-logo" cx="174.7" cy="137.1" r="1.1"/>
+        <path class="st1 nasa-logo" d="M145.5,26.7l2.7-0.3l-2.7-0.2c-0.1-0.5-0.5-0.9-1-1l-0.3-2.7l-0.2,2.7c-0.5,0.1-0.9,0.5-0.9,1l-2.8,0.3
+          l2.8,0.1c0.1,0.5,0.5,0.8,0.9,0.9l0.3,2.8l0.1-2.8C145.1,27.6,145.5,27.2,145.5,26.7z"/>
+        <path class="st1 nasa-logo" d="M100.1,56.7l2.7-0.3l-2.7-0.2c-0.1-0.5-0.5-0.9-1-1l-0.3-2.7l-0.2,2.7c-0.5,0.1-0.9,0.5-0.9,1L95,56.6l2.8,0.1
+          c0.1,0.5,0.5,0.8,0.9,0.9l0.3,2.8l0.1-2.8C99.7,57.6,100.1,57.2,100.1,56.7z"/>
+          
+        <path class="st1 nasa-logo" d="M200.7,135.9l2.7-0.3l-2.7-0.2c-0.1-0.5-0.5-0.9-1-1l-0.3-2.7l-0.2,2.7c-0.5,0.1-0.9,0.5-0.9,1l-2.8,0.2
+          l2.8,0.1c0.1,0.5,0.5,0.8,0.9,0.9l0.2,2.8l0.1-2.8C200.2,136.7,200.6,136.4,200.7,135.9z"/>
+          
+        <path class="st1 nasa-logo" d="M91.1,177.3l2.7-0.3l-2.7-0.2c-0.1-0.5-0.5-0.9-1-1l-0.3-2.7l-0.2,2.7c-0.5,0.1-0.9,0.5-0.9,1l-2.8,0.2
+          l2.8,0.1c0.1,0.5,0.5,0.8,0.9,0.9l0.3,2.8l0.1-2.8C90.6,178.1,91,177.8,91.1,177.3z"/>
+        <path class="st1 nasa-logo" d="M192.2,157.1l2.7-0.3l-2.7-0.2c-0.1-0.5-0.5-0.9-1-1l-0.3-2.7l-0.2,2.7c-0.5,0.1-0.9,0.5-0.9,1l-2.8,0.2
+          l2.8,0.1c0.1,0.5,0.5,0.8,0.9,0.9l0.2,2.8l0.1-2.8C191.7,158,192.1,157.6,192.2,157.1z"/>
+        <path class="st1 nasa-logo" d="M112.3,129.3c-2.1-2.7-5.1-6.3-7.3-9c-3-3.7-5.7-7.5-8.2-11.2c-0.8,0.2-1.6,0.4-2.5,0.6c3,4.7,6.4,9.4,10,14
+          c2.7,3.4,5.1,6.1,6.4,7.8c0.2,0.3,0.8,1.1,1.4,2.1c0.8-0.5,1.6-1.1,2.4-1.6C113.8,131.1,113,130.2,112.3,129.3z M127.8,143.4
+          c-1.8-1.7-6-4.4-10.4-8.6c-1,0.7-1.9,1.3-2.9,2c2.9,4,6.7,8.9,9.8,10.4C128.8,149.4,130.1,145.5,127.8,143.4z"/>
+          
+        <path class="st2 nasa-logo" d="M147.6,82.3c-11.2,4.4-22.2,8.3-31.4,11.1c-18.8,5.9-70.1,21.8-101.1,41.8l2.6,1c18.9-10.7,31.2-14,43-17.7
+          c12.8-4,54.3-13.8,73.1-19c6.3-1.8,13.8-4.1,21.7-7c-1.8-2.6-3.8-5.1-5.8-7.7C149,84,148.3,83.1,147.6,82.3z"/>
+        <path class="st2 nasa-logo" d="M207.4,72.6c11.4-9.6,34.6-29.4,43.6-55.6c-16.4,20.9-35.9,32.9-47.5,39.7c-13.1,7.7-33.8,17-53.9,24.9
+          c0.5,0.6,1,1.2,1.4,1.8c2.2,2.8,4.4,5.7,6.4,8.5c15.8-5.8,33.1-13.6,46.9-23.1c-0.9,0.8-2.1,1.9-3.5,3.1L207.4,72.6z"/>
+          <path class="st1 nasa-logo" d="M85.3,45c-0.7,0.3-1.3,0.8-1.9,1.2c-9.7,7.7-5.8,30.5,8.6,55c-0.7,0.2-1.5,0.5-2.2,0.7
+          c-14.2-25.2-18.5-49.1-8.1-57.3c0.8-0.6,1.7-1.2,2.6-1.6L85.3,45z"/>
+          <text id="shadow" class="st2" x="50%" y="47%" dominant-baseline="middle" text-anchor="middle" font-family="arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#fff">[gay panic]</text>
+          <text id="txt" class="st1" x="50%" y="47%" dominant-baseline="middle" text-anchor="middle" font-family="arial" font-style="italic" font-weight="bold" font-size="6vh" style="fill:#ffa39f">[gay panic]</text>
+        <path class="st2 nasa-logo" d="M161.3,101.2c-2.7,1.8-5,3.3-6.6,4.2c-9.2,5.3-54.2,36.1-64.5,43.1s-38.7,33.9-47,41.7l-0.3,3.2
+          c27-24.2,35.4-30.2,46.2-38.4c13.3-10.1,40.7-28.8,50.1-34.8c8.9-5.7,17-11,24.2-15.8c-0.1-0.2-0.2-0.4-0.4-0.6
+          C162.4,103,161.9,102.1,161.3,101.2z M200.8,71.7c-8.8,7.4-26.6,20.6-38,28.4c0.7,1.1,1.3,2.2,2,3.3c20-13.4,33.5-23.2,41.3-29.8
+          c0.4-0.3,0.9-0.7,1.3-1.1L200.8,71.7z"/>
+          
+        <path class="st1 nasa-logo" d="M85.3,45c13.3-6.9,41.1,10.5,64.4,39.8c5.1,6.4,9.5,12.8,13.3,19c14.4,23.9,18.9,45.5,8.9,54.4
+          c-3.1,2.7-12.4,3.8-24.6-1.7c-0.2,0.2,0.1,0.8,0.3,0.9c10.6,4.2,20.7,5.9,25.8,1.8c12.3-9.8,2.8-44.2-22.4-75.9
+          c-23.7-29.8-52.4-47-66.8-40.2L85.3,45z"/>
+      </g>
 
+
+    
+  </svg>
+  
   <canvas id="cvs"></canvas>
 
   <div id="image-preview-modal">
@@ -56,6 +141,7 @@
     <div class="settings-header">
       <button id="save" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">image</span></button>
       <button id="randomize" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">casino</span></button>
+      <button id="nasa" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" > <image src="/assets/img/nasa.svg" style="height:30px;"></image></button>
       <button id="settings" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">settings</span></button>
     </div>
     <div class="input-group">
@@ -64,10 +150,25 @@
       </div>
     </div>
     <div class="input-group">
-      <div class="mui-checkbox">
+      <div class="mui-checkbox" style="margin-right: 20px;">
+        <label>
+          <input type="checkbox" value="" id="has-stars">
+          <span class="description">⭐</span>
+        </label>
+      </div>
+      <select id="fontselect"></select>
+    </div>
+    <div class="input-group">
+      <div class="mui-checkbox" style="margin-right: 20px;">
         <label>
           <input type="checkbox" value="" checked id="italics">
           <span class="description">Italics</span>
+        </label>
+      </div>
+      <div class="mui-checkbox">
+        <label>
+          <input type="checkbox" value="" checked id="has-shadow">
+          <span class="description">Shadow</span>
         </label>
       </div>
     </div>
@@ -82,6 +183,17 @@
     <div class="input-group">
       <span id="randShadowColor" class="material-icons">casino</span> <span class="description">Shadow</span>
       <input id="shadowColor" type="color" value="#ffffff">
+    </div>
+
+    <div class="input-group">
+      <span id="randPlanetColor" class="material-icons">casino</span> <span class="description" style="font-size:25px; margin-top: -9px;">🪐</span>
+      <input id="planetColor" type="color" value="#0B3D91">
+    </div>
+
+
+    <div class="input-group">
+      <span class="description">Spacing</span>
+      <input id="spacing" type="range" min="-10" max="50" value="0">
     </div>
 
     <div class="input-group">
@@ -125,6 +237,7 @@
 
   let shadow = $('#shadow');
   let text = $('#txt');
+  let nasaLogo = $('.nasa-logo');
   const pixelRatio = window.devicePixelRatio || 1;
 
   let xOffset = 0;
@@ -132,18 +245,72 @@
   let shadowXOffset = 3;
   let shadowYOffset = -1;
   let sizeDelta = 0;
+  let textSpacing = 0;
 
+  //NASA
+  
+  function randn_bm() {
+    let u = 0, v = 0;
+    while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+    while(v === 0) v = Math.random();
+    let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+    num = num / 10.0 + 0.5; // Translate to 0 -> 1
+    if (num > 1 || num < 0) return randn_bm() // resample between 0 and 1
+    return num
+  }
+
+  let nasaScale = 1;
+  let nasaHeight = 211.5;
+  let nasaWidth = 259.2;
+
+  $('.st2').css('fill', '#FC3D21');
+  $('.st1').css('fill', '#FFFFFF');
+  $('.st0').css('fill', '#0B3D91');
+
+  function populateStars() {
+    let starAmount = rand255();
+    let dim = document.getElementById("background").getBBox();
+    for(let i = 0; i < starAmount; i++) {
+      let pointyStar = rand255() < 128;
+      if (!pointyStar) {
+        d3.select("#stars").append("circle")
+          .attr("class", 'st0 star')
+          .attr("r", 2 * Math.random())
+          .attr("cx", Math.random() * dim.width)
+          .attr("cy", Math.random() * dim.height)
+          .attr("style", "fill:#0B3D91");
+      } else {
+        let scale = Math.random() * 8;
+        d3.select("#stars").append("path")
+          .attr('d','M58.71 12.288l1.119-.107-1.117-.063c-.035-.216-.208-.385-.426-.413l-.107-1.114-.064 1.123c-.202.045-.357.214-.382.424l-1.144.104 1.152.062c.042.193.198.344.394.38l.104 1.148.061-1.146C58.507 12.651 58.671 12.492 58.71 12.288z')
+          .attr('transform', `translate(${Math.random() * dim.width}, ${Math.random() * dim.height}) scale(${scale},${scale})`)
+          .attr("class", 'st0 star')
+          .attr("style", "fill:#0B3D91");
+      }
+    }
+    $("#svg-cont").html($("#svg-cont").html());
+  }
+
+  function hideStars() {
+    $('.star').remove();
+  }
+
+  updateLayout();
   function updateLayout() {
-    // text.attr('x', `${40 + xOffset}%`);
-    // text.attr('y', `${50 + yOffset}%`);
-    // shadow.attr('x', `${40 + xOffset}%`);
-    // shadow.attr('y', `${50 + yOffset}%`);
-
-    text.attr('transform', `translate(${xOffset},${yOffset})`);
-    shadow.attr('transform', `translate(${xOffset + shadowXOffset},${yOffset + shadowYOffset})`);
+    text.attr('transform', `translate(${xOffset + textSpacing/2},${yOffset})`);
+    shadow.attr('transform', `translate(${xOffset + shadowXOffset + textSpacing/2},${yOffset + shadowYOffset})`);
 
     text.attr('font-size', `${6 + sizeDelta/30.0}vh`);
     shadow.attr('font-size', `${6 + sizeDelta/30.0}vh`);
+
+    text.attr('letter-spacing', textSpacing);
+    shadow.attr('letter-spacing', textSpacing);
+
+    let dim = document.getElementById("background").getBBox();
+    let x = (dim.width - nasaWidth * nasaScale)/2;
+    let y = (dim.height - nasaHeight * nasaScale)/2 * 0.9;
+    nasaLogo.attr('transform', `scale(${nasaScale}, ${nasaScale}) translate(${x}, ${y})`);
+    
   }
 
   function rand255() {
@@ -170,20 +337,27 @@
 
   function randTextColor() {
     let newColor = randHex();
-    $("#txt").css("fill", newColor);
+    $(".st1").css("fill", newColor);
     $('#textColor').val(newColor);
   }
 
   function randShadowColor() {
     let newColor = randHex();
-    $("#shadow").css("fill", newColor);
+    $(".st2").css("fill", newColor);
     $('#shadowColor').val(newColor);
+  }
+
+  function randPlanetColor() {
+    let newColor = randHex();
+    $(".st0").css("fill", newColor);
+    $('#planetColor').val(newColor);
   }
 
   $('#randomize').click(()=>{
     randBgColor();
     randTextColor();
     randShadowColor();
+    randPlanetColor();
   });
 
   $('#randBgColor').click(()=>{
@@ -198,6 +372,10 @@
     randShadowColor();
   });
 
+  $('#randPlanetColor').click(()=>{
+    randPlanetColor();
+  });
+
   const palettes = [
     ['006E7F', 'F8CB2E', 'EE5007', 'B22727'],
     ['E9D5DA', '827397', '4D4C7D', '363062'],
@@ -205,6 +383,8 @@
     ['4700D8', '9900F0', 'F900BF', 'FF85B3'],
     ['112B3C', '205375', 'F66B0E', 'EFEFEF'],
     ['E9EFC0', 'B4E197', '83BD75', '4E944F'],
+    ['B4FF9F', 'F9FFA4', 'FFD59E', 'FFA1A1'],
+
   ];
 
   for (let i = 0; i < palettes.length; i++) {
@@ -218,12 +398,14 @@
                       .sort((a, b) => a.sort - b.sort)
                       .map(({ value }) => value)
       $("#background").css("fill", `#${shuffled[0]}`);
-      $("#txt").css("fill", `#${shuffled[1]}`);
-      $("#shadow").css("fill", `#${shuffled[2]}`);
+      $(".st1").css("fill", `#${shuffled[1]}`);
+      $(".st2").css("fill", `#${shuffled[2]}`);
+      $(".st0").css("fill", `#${shuffled[3]}`);
 
       $("#bgColor").val(`#${shuffled[0]}`);
       $("#textColor").val(`#${shuffled[1]}`);
       $('#shadowColor').val(`#${shuffled[2]}`);
+      $('#planetColor').val(`#${shuffled[3]}`);
 
     });
     for(let j = 0; j < palettes[i].length; j++) {
@@ -234,10 +416,9 @@
     }
   }
 
-  updateLayout();
   let previewing = false;
   let canvas = document.getElementById('cvs');
-  $('#save').click(()=>{
+  $('#save').click(async ()=>{
     if (previewing) {
       $('#cvs').remove();
       $('#image-preview').css('opacity', '0');
@@ -254,14 +435,17 @@
     canvas.height = dim.height * pixelRatio;
     canvas.width = dim.width * pixelRatio;
     
-    text.attr('transform', `translate(${xOffset * pixelRatio},${yOffset * pixelRatio})`);
-    shadow.attr('transform', `translate(${(xOffset + shadowXOffset) * pixelRatio},${(yOffset + shadowYOffset) * pixelRatio})`); // temporarily scale according to pixel ratio
+    text.attr('transform', `translate(${(xOffset + textSpacing/2) * pixelRatio},${yOffset * pixelRatio})`);
+    shadow.attr('transform', `translate(${(xOffset + shadowXOffset + textSpacing/2) * pixelRatio},${(yOffset + shadowYOffset) * pixelRatio})`); // temporarily scale according to pixel ratio
     let ctx = document.getElementById('cvs').getContext('2d');
     ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
-    let v = Canvg.fromString(ctx, svg.outerHTML);
-    v.start();
+    //let v = Canvg.fromString(ctx, svg.outerHTML);
+    //v.start();
+    $('#settings-panel').css('opacity', '0');
+    let cvs = await html2canvas(document.body);
+    $('#settings-panel').css('opacity', '1');
     updateLayout();
-    const imgURI = canvas
+    const imgURI = cvs
       .toDataURL('image/png');
 
     $('#image-preview-container').html(`<img src="${imgURI}" height="90%"/>`);
@@ -281,6 +465,11 @@
     download.click();
     download.remove();
   }
+
+  $(document).on('input', '#spacing', function() {
+    textSpacing = parseInt($(this).val());
+    updateLayout();
+  });
 
   $(document).on('input', '#textX', function() {
     xOffset = parseInt($(this).val());
@@ -307,16 +496,23 @@
   });
 
   $(document).on('input', '#textColor', function() {
-    $("#txt").css("fill", $(this).val());
+    $(".st1").css("fill", $(this).val());
   });
 
   $(document).on('input', '#shadowColor', function() {
-    $("#shadow").css("fill", $(this).val());
+    $(".st2").css("fill", $(this).val());
   });
 
+  $(document).on('input', '#planetColor', function() {
+    $(".st0").css("fill", $(this).val());
+  });
+
+  function setText(newText) {
+    $("#txt").text(newText);
+    $("#shadow").text(newText);
+  }
   $(document).on('input', '#textContent', function() {
-    $("#txt").text($(this).val());
-    $("#shadow").text($(this).val());
+    setText($(this).val());
   });
 
 
@@ -328,22 +524,91 @@
   let collapsed = true;
   $('#settings').click( function() {
     if (collapsed) {
-      $('#settings-panel').css('height', '395px');
+      $('#settings-panel').css('height', '470px');
     } else {
       $('#settings-panel').css('height', '40px');
     }
     collapsed = !collapsed;
   });
 
-  $("#italics").change( function() {
-    if (this.checked) {
+  let nasaVisible = false;
+  $('#nasa').click( function() {
+    if (nasaVisible) {
+      hideStars();
+      nasaLogo.css('opacity', '0');
+    } else {
+      $('#background').css('fill', '#C6E7FB');
+      $('#bgColor').val('#C6E7FB');
+      setFont('abril');
+      setText('GAY');
+      setItalics(false);
+      $("#italics").removeAttr('checked');
+      $('#fontselect').val('abril');
+      shadow.css('opacity', '0');
+      $("#has-shadow").removeAttr('checked');
+      $('#textContent').val('GAY');
+      $('.st1').css('fill', 'white');
+      $('#textColor').val('#ffffff');
+      $('.st2').css('fill', '#FC3D21');
+      $('#shadowColor').val('#FC3D21');
+      textSpacing = 12;
+      $('#spacing').val(12);
+      sizeDelta = 20;
+      $('#size').val(20);
+      updateLayout();
+      populateStars();
+      $('#has-stars').attr('checked', true);
+      nasaLogo.css('opacity', '1');
+    }
+    nasaVisible = !nasaVisible;
+  });
+
+  function setItalics(isItalics) {
+    if (isItalics) {
       $('#txt').attr('font-style', 'italic');
       $('#shadow').attr('font-style', 'italic');
     } else {
       $('#txt').attr('font-style', '');
       $('#shadow').attr('font-style', '');
     }
+  }
+
+  $("#italics").change( function() {
+    setItalics(this.checked);
   })
-  
+
+  $("#has-shadow").change( function() {
+    if (this.checked) {
+      $('#shadow').css('opacity', '1');
+    } else {
+      $('#shadow').css('opacity', '0');
+    }
+  })
+
+  $("#has-stars").change( function() {
+    if (this.checked) {
+      populateStars();
+    } else {
+      hideStars();
+    }
+  })
+
+  //FONTS
+  let fonts = ['arial', 'bangers', 'abril']
+  for (let i = 0; i < fonts.length; i++) {
+    jQuery('<option>', {
+        value: fonts[i],
+        html: fonts[i],
+      }).appendTo(`#fontselect`);
+  }
+
+  function setFont(fontName) {
+    text.attr('font-family',  fontName );
+    shadow.attr('font-family',  fontName );
+  }
+
+  $('#fontselect').on('change', function () {
+    setFont(this.value);
+  });
 </script>
 </html>
