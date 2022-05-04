@@ -244,8 +244,9 @@
   let nasaHeight = 192.99;
   let nasaWidth = 228.83;
 
-  $('.st2').css('fill', '#FC3D21');
-  $('.st1').css('fill', '#FFFFFF');
+
+  $('.st2').css('fill', '#FFFFFF');
+  $('.st1').css('fill', '#ffa39f');
   $('.st0').css('fill', '#0B3D91');
 
   function populateStars() {
@@ -259,14 +260,14 @@
           .attr("r", 2 * Math.random())
           .attr("cx", Math.random() * dim.width)
           .attr("cy", Math.random() * dim.height)
-          .attr("style", "fill:#0B3D91");
+          .attr("style", `fill:${$('#planetColor').val()}`);
       } else {
         let scale = Math.random() * 8;
         d3.select("#stars").append("path")
           .attr('d','M58.71 12.288l1.119-.107-1.117-.063c-.035-.216-.208-.385-.426-.413l-.107-1.114-.064 1.123c-.202.045-.357.214-.382.424l-1.144.104 1.152.062c.042.193.198.344.394.38l.104 1.148.061-1.146C58.507 12.651 58.671 12.492 58.71 12.288z')
           .attr('transform', `translate(${Math.random() * dim.width}, ${Math.random() * dim.height}) scale(${scale},${scale})`)
           .attr("class", 'st0 star')
-          .attr("style", "fill:#0B3D91");
+          .attr("style",  `fill:${$('#planetColor').val()}`);
       }
     }
     $("#svg-cont").html($("#svg-cont").html());
