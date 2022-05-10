@@ -126,10 +126,11 @@
       <button id="nasa" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" > <image src="/assets/img/nasa.svg" style="height:30px;"></image></button>
       <button id="settings" class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" ><span class="material-icons">settings</span></button>
     </div>
-    <div class="input-group">
+    <div class="input-group" style="display:flex;">
       <div class="mui-textfield" style = "padding:5px; width: 100%; ">
         <textarea id="textContent" type="text" rows="2">[gay panic]</textarea>
       </div>
+      <button id="duplicate-text" style="right:3px; background-color: transparent; border-width: 0;"><span class="material-icons">content_copy</span></button>
     </div>
     <div class="input-group">
       <div class="mui-checkbox" style="margin-right: 20px;">
@@ -180,7 +181,7 @@
 
     <div class="input-group">
       <span class="description">Size</span>
-      <input id="size" type="range" min="-100" max="200" value="0" />
+      <input id="size" type="range" min="-200" max="600" value="0" />
     </div>
 
     <div class="input-group">
@@ -480,7 +481,9 @@
     $(".st0").css("fill", $(this).val());
   });
 
+  let currText = '[gay panic]';
   function setText(newText) {
+    currText = newText;
     let textArray = newText.split("\n");
     text.children().remove();
     shadow.children().remove();
@@ -495,9 +498,16 @@
         d3.select("#shadow").append("tspan").attr('dy', '1.2em').attr('x', "50%").html(textArray[i]);
       }
     }
-
   }
-  setText('[gay panic]');
+  setText(currText);
+
+  $('#duplicate-text').click(() => {
+    let textArray = currText.split("\n");
+    let lastLine = textArray[textArray.length - 1];
+    let newText = currText + '\n' + lastLine;
+    setText(newText);
+    $("#textContent").val(newText);
+  })
 
   $(document).on('input', '#textContent', function() {
     setText($(this).val());
@@ -599,5 +609,8 @@
   $('#fontselect').on('change', function () {
     setFont(this.value);
   });
+
+
+
 </script>
 </html>
